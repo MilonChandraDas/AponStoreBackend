@@ -1,6 +1,8 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const authRoutes = require("./routes/auth.route");
+const productRoutes = require("./routes/product.route");
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.use(
   cors(),
 );
 
+app.use("/api/auth", authRoutes);
+app.use("/api/product", productRoutes);
 // একটি টেস্ট রুট (Vercel-এ চেক করার জন্য)
 app.get("/", (req, res) => {
   res.send("Server is running on Vercel!");
