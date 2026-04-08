@@ -134,7 +134,7 @@ const allProducts = async (req, res) => {
   try {
     // ডাটাবেস থেকে সব প্রোডাক্ট খুঁজে বের করা
     // .sort({ createdAt: -1 }) দেওয়া হয়েছে যাতে নতুন প্রোডাক্টগুলো আগে দেখায়
-    const products = await productModel.find({}).sort({ createdAt: -1 });
+    const products = await productModel.find().sort({ createdAt: -1 }).toArray()
 
     // যদি কোনো প্রোডাক্ট না থাকে
     if (!products || products.length === 0) {
